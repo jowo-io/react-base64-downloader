@@ -9,7 +9,7 @@ Easily convert and download base64 strings or HTMLCanvasElements as image files 
 ## Usage
 
 ```jsx
-import { Base64DownloadBtn } "react-base64-download";
+import Base64DownloadBtn from 'react-base64-download';
 
 ReactDOM.render(
     <Base64DownloadBtn
