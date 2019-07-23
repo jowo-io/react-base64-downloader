@@ -28,6 +28,10 @@ ReactDOM.render(
 );
 ```
 
+## Examples
+
+See examples [here](https://pureth.github.io/react-base64-downloader/dist/example.html)
+
 ## Pull requests
 
 If you plan on spinning up this repo locally and submitting PR's, please ensure you use Prettier to lint the JS.
