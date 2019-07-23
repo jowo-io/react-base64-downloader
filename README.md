@@ -8,9 +8,24 @@ Easily convert and download base64 strings or HTMLCanvasElements as image files 
 
 ## Usage
 
-```javascript
-import { Base64DownloadBtn, triggerBase64Download } "react-base64-download";
+```jsx
+import { Base64DownloadBtn } "react-base64-download";
 
+ReactDOM.render(
+    <Base64DownloadBtn
+        downloadName="1x1_red_pixel.png"
+        base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAMSURBVBhXY/jPYAwAAzQBM849AKsAAAAASUVORK5CYII="
+        Tag="a"
+        extraAttributes={{ href: 'javascript:;' }}
+        className="my-class-name"
+        style={{ color: 'orange' }}
+        onDownloadSuccess={() => console.log('File download initiated')}
+        onDownloadError={() => console.warn('Download failed to start')}
+    >
+        Click to download
+    </Base64DownloadBtn>,
+    document.getElementById('root')
+);
 ```
 
 ## Pull requests
