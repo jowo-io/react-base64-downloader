@@ -13,7 +13,7 @@ import Base64DownloadBtn from 'react-base64-downloader';
 
 ReactDOM.render(
     <Base64DownloadBtn
-        downloadName="1x1_red_pixel.png"
+        downloadName="1x1_red_pixel"
         base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAMSURBVBhXY/jPYAwAAzQBM849AKsAAAAASUVORK5CYII="
         Tag="a"
         extraAttributes={{ href: 'javascript:;' }}
