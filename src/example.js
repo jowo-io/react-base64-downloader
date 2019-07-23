@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import ReactDOM from 'react-dom';
-import Base64DownloadBtn from './index.js'; // import from "react-base64-download" in when installed via npm
+import Base64DownloadBtn from './index.js'; // import from "react-base64-downloader" in when installed via npm
 
 // a basic base64 string used as the example
 const base64Example =
