@@ -18,7 +18,7 @@ const base64Prepends = {
 };
 
 /* default name of the file download if none is specified */
-const defaultDownloadName = 'download';
+export const defaultDownloadName = 'download';
 
 /**
  * generates a HTML tag with a click event that triggers the download of a base64 image
@@ -95,7 +95,7 @@ export function triggerBase64Download(base64, name = defaultDownloadName) {
     const contentType = contentTypes[ext];
     const cleanedBase64 = base64.replace(`${prepend},`, '');
 
-    // generate a blob, then a file and then save the file.
+    // // generate a blob, then a file and then save the file.
     const blob = base64ToBlob(cleanedBase64, contentType);
     const file = new File([blob], `${name}.${ext}`, { type: prepend });
     fileSaver.saveAs(file);
@@ -106,7 +106,7 @@ export function triggerBase64Download(base64, name = defaultDownloadName) {
  *
  * @param {string} base64 - base64 image string including prepend. e.g. data:image/png;base64,iVBORw0KGgo...
  */
-function getExtFromBase64(base64) {
+export function getExtFromBase64(base64) {
     let ext;
     if (typeof base64 === 'string') {
         ext = Object.keys(base64Prepends).find(
