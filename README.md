@@ -50,7 +50,7 @@ const base64 =
 
 ## Examples
 
-See examples <a href="https://pureth.github.io/react-base64-downloader/dist/example/example.html" target="_blank">here!</a>
+See examples [here](https://pureth.github.io/react-base64-downloader/dist/example/example.html)
 
 ## Pull requests
 
