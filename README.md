@@ -15,9 +15,12 @@ import Base64Downloader from 'react-base64-downloader';
 
 // ...
 
+const base64 =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAMSURBVBhXY/jPYAwAAzQBM849AKsAAAAASUVORK5CYII=';
+
 <Base64Downloader
     downloadName="1x1_red_pixel"
-    base64="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAMSURBVBhXY/jPYAwAAzQBM849AKsAAAAASUVORK5CYII="
+    base64={base64}
     Tag="a"
     extraAttributes={{ href: 'javascript:;' }}
     className="my-class-name"
@@ -37,9 +40,10 @@ import { triggerBase64Download } from 'react-base64-downloader';
 
 // ...
 
-<button
-    onClick={() => triggerBase64Download(base64Example, 'my_download_name')}
->
+const base64 =
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjEuNv1OCegAAAAMSURBVBhXY/jPYAwAAzQBM849AKsAAAAASUVORK5CYII=';
+
+<button onClick={() => triggerBase64Download(base64, 'my_download_name')}>
     Click to download
 </button>;
 ```
