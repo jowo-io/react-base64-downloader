@@ -56,6 +56,6 @@ See examples [here](https://pureth.github.io/react-base64-downloader/dist/exampl
 
 If you plan on spinning up this repo locally and submitting PR's, please ensure you use Prettier to lint the JS.
 
-The dev script is `npm run dev`, once run, you can open the `dist/example/example.html` folder locally to see the the output.
+The dev script is `npm run dev`, once run, you can open the `dist/example/example.html` file locally in the browser to see the the output.
 
 > Note: hot-reloading is not configured.
