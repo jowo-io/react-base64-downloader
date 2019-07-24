@@ -1,19 +1,29 @@
 import React from 'react';
-import * as FileSaver from 'file-saver';
+import PropTypes from 'prop-types';
+import * as fileSaver from 'file-saver';
+import * as base64ToBlob from 'b64-to-blob';
 
+/* various allowed content types */
 const contentTypes = {
     png: 'image/png',
     jpeg: 'image/jpeg',
     jpg: 'image/jpg',
 };
 
+/* various allowed base64 prepends, these are prepended to the start of a base64 image string */
 const base64Prepends = {
     png: `data:${contentTypes.png};base64`,
     jpeg: `data:${contentTypes.jpeg};base64`,
     jpg: `data:${contentTypes.jpg};base64`,
 };
 
-const Base64DownloadBtn = function({
+/* default name of the file download if none is specified */
+const defaultDownloadName = 'download';
+
+/**
+ * generates a HTML tag with a click event that triggers the download of a base64 image
+ */
+const Base64Downloader = function({
     base64,
     children,
     downloadName,
@@ -24,16 +34,10 @@ const Base64DownloadBtn = function({
     style,
     extraAttributes,
 }) {
-    const ext = getExt(base64);
-    if (ext instanceof Error) {
-        console.error(ext);
-        return null;
-    }
-
     function handleClick() {
         try {
-            downloadBase64AsImg(base64, ext, downloadName);
-            if (onDownloadSuccess) onDownloadSuccess({ base64, ext });
+            triggerBase64Download(base64, downloadName);
+            if (onDownloadSuccess) onDownloadSuccess({ base64 });
         } catch (e) {
             console.error(e);
             if (onDownloadError) onDownloadError(e);
@@ -52,20 +56,57 @@ const Base64DownloadBtn = function({
     );
 };
 
-Base64DownloadBtn.defaultProps = {
+Base64Downloader.defaultProps = {
     className: '',
     style: {},
-    downloadName: 'download',
+    downloadName: defaultDownloadName,
     Tag: 'button',
     extraAttributes: {},
 };
 
-export default Base64DownloadBtn;
+Base64Downloader.propTypes = {
+    // required
+    base64: PropTypes.string.isRequired,
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
+        .isRequired,
+    // optional
+    downloadName: PropTypes.string,
+    onDownloadSuccess: PropTypes.func,
+    onDownloadError: PropTypes.func,
+    Tag: PropTypes.string,
+    className: PropTypes.string,
+    style: PropTypes.object,
+    extraAttributes: PropTypes.object,
+};
+
+export default Base64Downloader;
 
 /**
- * clean the base64 prop into a usable base64 string
+ * Triggers a browser file download from a base64 string
+ *
+ * @param {string} base64 - base64 image string including prepend. e.g. data:image/png;base64,iVBORw0KGgo...
+ * @param {string} name - name of the file which will be downloaded
  */
-function getExt(base64) {
+export function triggerBase64Download(base64, name = defaultDownloadName) {
+    const ext = getExtFromBase64(base64);
+
+    // if the getExtFromBase64 method doesn't throw, we have a valid extension!
+    const prepend = base64Prepends[ext];
+    const contentType = contentTypes[ext];
+    const cleanedBase64 = base64.replace(`${prepend},`, '');
+
+    // generate a blob, then a file and then save the file.
+    const blob = base64ToBlob(cleanedBase64, contentType);
+    const file = new File([blob], `${name}.${ext}`, { type: prepend });
+    fileSaver.saveAs(file);
+}
+
+/**
+ * Checks for a valid file extension prepend in a base64 image string
+ *
+ * @param {string} base64 - base64 image string including prepend. e.g. data:image/png;base64,iVBORw0KGgo...
+ */
+function getExtFromBase64(base64) {
     let ext;
     if (typeof base64 === 'string') {
         ext = Object.keys(base64Prepends).find(
@@ -73,48 +114,14 @@ function getExt(base64) {
         );
     }
 
+    // if extension was found, return it, otherwise throw.
     if (ext) {
         return ext;
     } else {
-        return new Error(
-            `props.base64 on <Base64DownloadBtn/> has invalid or undefined extension. expected ${Object.keys(
+        throw new Error(
+            `props.base64 on <Base64Downloader/> has invalid or undefined extension. expected ${Object.keys(
                 contentTypes
             ).join(', ')}`
         );
     }
-}
-
-/**
- * triggers a browser file download from a base64 string
- */
-function downloadBase64AsImg(base64, ext, name) {
-    const prepend = base64Prepends[ext];
-    const cleanedBase64 = base64.replace(`${prepend},`, '');
-    const blob = b64toBlob(cleanedBase64, ext);
-    const file = new File([blob], `${name}.${ext}`, { type: prepend });
-    FileSaver.saveAs(file);
-}
-
-/**
- * coverts a base64 string into an image Blob
- */
-function b64toBlob(cleanedBase64, ext, sliceSize = 512) {
-    var byteCharacters = atob(cleanedBase64);
-    var byteArrays = [];
-
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-        var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-        var byteNumbers = new Array(slice.length);
-        for (var i = 0; i < slice.length; i++) {
-            byteNumbers[i] = slice.charCodeAt(i);
-        }
-
-        var byteArray = new Uint8Array(byteNumbers);
-
-        byteArrays.push(byteArray);
-    }
-
-    var blob = new Blob(byteArrays, { type: contentTypes[ext] });
-    return blob;
 }

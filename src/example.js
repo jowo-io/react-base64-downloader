@@ -1,6 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import Base64DownloadBtn from './index.js'; // import from "react-base64-downloader" in when installed via npm
+
+// import from "react-base64-downloader" when installed via npm
+import Base64Downloader, { triggerBase64Download } from './index.js';
 
 // a basic base64 string used as the example
 const base64Example =
@@ -8,67 +10,85 @@ const base64Example =
 
 const ExampleApp = function() {
     const [downloadInitiated, setDownloadInitiated] = useState(false);
-    console.log(downloadInitiated);
+
     return (
-        <Fragment>
+        <div
+            style={{
+                fontFamily:
+                    '"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
+                fontWeight: 300,
+            }}
+        >
             <h4>
-                <b>Base64DownloadBtn</b> example!
+                <b>Base64Downloader</b> example!
             </h4>
-            <Base64DownloadBtn base64={base64Example}>
+            <Base64Downloader base64={base64Example}>
                 Click to download
-            </Base64DownloadBtn>
+            </Base64Downloader>
 
             <h4>
-                <b>Base64DownloadBtn</b> define the download name!
+                <b>Base64Downloader</b> define the download name!
             </h4>
-            <Base64DownloadBtn
+            <Base64Downloader
                 downloadName="my_file_name"
                 base64={base64Example}
             >
                 Click to download
-            </Base64DownloadBtn>
+            </Base64Downloader>
 
             <h4>
-                <b>Base64DownloadBtn</b> choose a custom HTML tag!
+                <b>Base64Downloader</b> choose a custom HTML tag!
             </h4>
-            <Base64DownloadBtn tag="div" base64={base64Example}>
+            <Base64Downloader tag="div" base64={base64Example}>
                 Click to download
-            </Base64DownloadBtn>
+            </Base64Downloader>
 
             <h4>
-                <b>Base64DownloadBtn</b> with styles or classes!
+                <b>Base64Downloader</b> with styles or classes!
             </h4>
-            <Base64DownloadBtn
+            <Base64Downloader
                 style={{ color: 'orange' }}
                 className="my-class-name"
                 base64={base64Example}
             >
                 Click to download
-            </Base64DownloadBtn>
+            </Base64Downloader>
 
             <h4>
-                <b>Base64DownloadBtn</b> with any extra attributes on the HTML
+                <b>Base64Downloader</b> with any extra attributes on the HTML
                 tag!
             </h4>
-            <Base64DownloadBtn
+            <Base64Downloader
                 Tag="a"
                 base64={base64Example}
                 extraAttributes={{ href: 'javascript:;' }}
             >
                 Click to download
-            </Base64DownloadBtn>
+            </Base64Downloader>
 
             <h4>
-                <b>Base64DownloadBtn</b> success and error callbacks tag!
+                <b>Base64Downloader</b> success and error callbacks tag!
             </h4>
-            <Base64DownloadBtn
+            <Base64Downloader
                 base64={base64Example}
                 onDownloadSuccess={setDownloadInitiated}
                 onDownloadError={() => console.warn('Download failed to start')}
             >
                 {downloadInitiated ? 'File downloaded' : 'Click to download'}
-            </Base64DownloadBtn>
-        </Fragment>
+            </Base64Downloader>
+
+            <h4>
+                <b>triggerBase64Download</b> trigger a base64 image download
+                without the React wrapper
+            </h4>
+            <button
+                onClick={() =>
+                    triggerBase64Download(base64Example, 'my_download_name')
+                }
+            >
+                Click to download
+            </button>
+        </div>
     );
 };
 
