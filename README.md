@@ -1,6 +1,6 @@
 # react-base64-downloader
 
-Easily convert and download base64 strings or HTMLCanvasElements as image files in React.
+Easily download base64 strings as image files in React.
 
 ## Installation
 
@@ -50,7 +50,7 @@ const base64 =
 
 ## Examples
 
-See examples [here](https://pureth.github.io/react-base64-downloader/dist/example/example.html)
+See examples <a href="https://pureth.github.io/react-base64-downloader/dist/example/example.html" target="_blank">here!</a>
 
 ## Pull requests
 
