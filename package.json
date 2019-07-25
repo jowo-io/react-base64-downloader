@@ -1,6 +1,6 @@
 {
     "name": "react-base64-downloader",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "Easily convert and download base64 strings or HTMLCanvasElements as image files in React.",
     "main": "dist/index.js",
     "scripts": {
