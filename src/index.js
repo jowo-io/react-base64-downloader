@@ -46,10 +46,10 @@ const Base64Downloader = function({
 
     return (
         <Tag
+            {...extraAttributes}
             onClick={handleClick}
             className={className}
             style={style}
-            {...extraAttributes}
         >
             {children}
         </Tag>
