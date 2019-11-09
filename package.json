@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pureth/react-base64-downloader.git"
+        "url": "git+https://github.com/jowo-io/react-base64-downloader.git"
     },
     "keywords": [
         "react-base64-downloader",
@@ -23,12 +23,12 @@
         "blob",
         "string"
     ],
-    "author": "pureth",
+    "author": "jowo-io",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/pureth/react-base64-downloader/issues"
+        "url": "https://github.com/jowo-io/react-base64-downloader/issues"
     },
-    "homepage": "https://github.com/pureth/react-base64-downloader#readme",
+    "homepage": "https://github.com/jowo-io/react-base64-downloader#readme",
     "peerDependencies": {
         "react": ">=15.0.1",
         "react-dom": ">=15.0.1"
