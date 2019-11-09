@@ -56,7 +56,7 @@ const base64 =
 
 ## Examples
 
-See examples [here](https://pureth.github.io/react-base64-downloader/dist/example/example.html)
+See examples [here](https://jowo-io.github.io/react-base64-downloader/dist/example/example.html)
 
 ## Pull requests
 
