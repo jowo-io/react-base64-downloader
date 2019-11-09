@@ -95,7 +95,7 @@ export function triggerBase64Download(base64, name = defaultDownloadName) {
     const contentType = contentTypes[ext];
     const cleanedBase64 = base64.replace(`${prepend},`, '');
 
-    // // generate a blob, then a file and then save the file.
+    // generate a blob, then a file and then save the file.
     const blob = base64ToBlob(cleanedBase64, contentType);
     const file = new File([blob], `${name}.${ext}`, { type: prepend });
     fileSaver.saveAs(file);
