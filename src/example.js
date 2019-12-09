@@ -61,7 +61,7 @@ const ExampleApp = function() {
             <Base64Downloader
                 Tag="a"
                 base64={base64Example}
-                extraAttributes={{ href: 'javascript:;' }}
+                extraAttributes={{ href: '#' }}
             >
                 Click to download
             </Base64Downloader>

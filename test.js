@@ -41,7 +41,7 @@ const requiredProps = {
 const allProps = {
     downloadName: '1x1_red_pixel',
     Tag: 'a',
-    extraAttributes: { href: 'javascript:;' },
+    extraAttributes: { href: '#' },
     className: 'my-class-name',
     style: { color: 'orange' },
     onDownloadSuccess: jest.fn(),

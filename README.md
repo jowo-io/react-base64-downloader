@@ -28,7 +28,7 @@ const base64 =
     base64={base64}
     downloadName="1x1_red_pixel"
     Tag="a"
-    extraAttributes={{ href: 'javascript:;' }}
+    extraAttributes={{ href: '#' }}
     className="my-class-name"
     style={{ color: 'orange' }}
     onDownloadSuccess={() => console.log('File download initiated')}
