@@ -1,6 +1,6 @@
 {
     "name": "react-base64-downloader",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "description": "Easily convert and download base64 strings or HTMLCanvasElements as image files in React.",
     "main": "dist/index.js",
     "scripts": {
@@ -34,23 +34,23 @@
         "react-dom": ">=15.0.1"
     },
     "devDependencies": {
-        "@babel/core": "^7.7.5",
-        "@babel/preset-env": "^7.7.6",
-        "@babel/preset-react": "^7.7.4",
+        "@babel/core": "^7.9.0",
+        "@babel/preset-env": "^7.9.5",
+        "@babel/preset-react": "^7.9.4",
         "b64-to-blob": "^1.2.19",
-        "babel-loader": "^8.0.6",
+        "babel-loader": "^8.1.0",
         "babel-plugin-rewire": "^1.2.0",
         "clean-webpack-plugin": "^3.0.0",
-        "enzyme": "^3.10.0",
-        "enzyme-adapter-react-16": "^1.15.1",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
         "file-saver": "^2.0.2",
         "html-webpack-plugin": "^3.2.0",
         "jest": "^24.9.0",
         "prop-types": "^15.7.2",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.10",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "webpack": "^4.42.1",
+        "webpack-cli": "^3.3.11",
         "webpack-merge": "^4.2.2"
     }
 }
