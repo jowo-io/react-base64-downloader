@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import * as fileSaver from 'file-saver';
-import * as base64ToBlob from 'b64-to-blob';
+import React from "react";
+import PropTypes from "prop-types";
+import * as fileSaver from "file-saver";
+import * as base64ToBlob from "b64-to-blob";
 
 /* various allowed content types */
 const contentTypes = {
-    png: 'image/png',
-    jpeg: 'image/jpeg',
-    jpg: 'image/jpg',
+    png: "image/png",
+    jpeg: "image/jpeg",
+    jpg: "image/jpg",
 };
 
 /* various allowed base64 prepends, these are prepended to the start of a base64 image string */
@@ -18,12 +18,12 @@ const base64Prepends = {
 };
 
 /* default name of the file download if none is specified */
-export const defaultDownloadName = 'download';
+export const defaultDownloadName = "download";
 
 /**
  * generates a HTML tag with a click event that triggers the download of a base64 image
  */
-const Base64Downloader = function({
+const Base64Downloader = function ({
     base64,
     children,
     downloadName,
@@ -45,30 +45,24 @@ const Base64Downloader = function({
     }
 
     return (
-        <Tag
-            {...extraAttributes}
-            onClick={handleClick}
-            className={className}
-            style={style}
-        >
+        <Tag {...extraAttributes} onClick={handleClick} className={className} style={style}>
             {children}
         </Tag>
     );
 };
 
 Base64Downloader.defaultProps = {
-    className: '',
+    className: "",
     style: {},
     downloadName: defaultDownloadName,
-    Tag: 'button',
+    Tag: "button",
     extraAttributes: {},
 };
 
 Base64Downloader.propTypes = {
     // required
     base64: PropTypes.string.isRequired,
-    children: PropTypes.oneOfType([PropTypes.node, PropTypes.string])
-        .isRequired,
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
     // optional
     downloadName: PropTypes.string,
     onDownloadSuccess: PropTypes.func,
@@ -93,7 +87,7 @@ export function triggerBase64Download(base64, name = defaultDownloadName) {
     // if the getExtFromBase64 method doesn't throw, we have a valid extension!
     const prepend = base64Prepends[ext];
     const contentType = contentTypes[ext];
-    const cleanedBase64 = base64.replace(`${prepend},`, '');
+    const cleanedBase64 = base64.replace(`${prepend},`, "");
 
     // generate a blob, then a file and then save the file.
     const blob = base64ToBlob(cleanedBase64, contentType);
@@ -108,10 +102,8 @@ export function triggerBase64Download(base64, name = defaultDownloadName) {
  */
 export function getExtFromBase64(base64) {
     let ext;
-    if (typeof base64 === 'string') {
-        ext = Object.keys(base64Prepends).find(
-            key => base64.indexOf(base64Prepends[key]) === 0
-        );
+    if (typeof base64 === "string") {
+        ext = Object.keys(base64Prepends).find((key) => base64.indexOf(base64Prepends[key]) === 0);
     }
 
     // if extension was found, return it, otherwise throw.
@@ -121,7 +113,7 @@ export function getExtFromBase64(base64) {
         throw new Error(
             `props.base64 on <Base64Downloader/> has invalid or undefined extension. expected ${Object.keys(
                 contentTypes
-            ).join(', ')}`
+            ).join(", ")}`
         );
     }
 }

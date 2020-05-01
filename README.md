@@ -1,6 +1,6 @@
 # react-base64-downloader
 
-Easily download base64 strings as image files in React.
+Easily trigger the download of base64 encoded `.png` or `.jpg` images in React.
 
 ## Installation
 
@@ -56,12 +56,14 @@ const base64 =
 
 ## Examples
 
-See examples [here](https://jowo-io.github.io/react-base64-downloader/dist/example/example.html)
+See examples [here](https://jowo-io.github.io/react-base64-downloader/example/example.html)
 
 ## Pull requests
 
 If you plan on spinning up this repo locally and submitting PR's, please ensure you use Prettier to lint the JS.
 
-The dev script is `npm run dev`, once run, you can open the `dist/example/example.html` file locally in the browser to see the output.
+First run `npm link react-base64-downloader` to create a symlink in the node_modules folder locally.
+
+Next run the dev script `npm run dev`. Once running, you can open the `example/example.html` file locally in the browser to see the output. There's no dev server configured.
 
 > Note: hot-reloading is not configured.
