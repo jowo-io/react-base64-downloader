@@ -68,7 +68,7 @@ const ExampleApp = function () {
 
             <h4>
                 <b>triggerBase64Download</b> trigger a base64 image download without the React
-                wrapper
+                wrapper!
             </h4>
             <button onClick={() => triggerBase64Download(base64Example, "my_download_name")}>
                 Click to download
