@@ -70,3 +70,10 @@ First run `npm link react-base64-downloader` to create a symlink in the node_mod
 Next run the dev script `npm run dev`. Once running, you can open the `example/example.html` file locally in the browser to see the output. There's no dev server configured.
 
 > Note: hot-reloading is not configured.
+
+## Building
+
+First run `npm link react-base64-downloader` to create a symlink in the node_modules folder locally.
+
+And then simply run `npm run build` to bundle the code for a production release.
+
