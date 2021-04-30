@@ -1,5 +1,8 @@
 # react-base64-downloader
 
+[![minified size](https://badgen.net/bundlephobia/min/react-base64-downloader)](https://bundlephobia.com/result?p=react-base64-downloader)
+[![download/year](https://badgen.net/npm/dy/react-base64-downloader)](https://www.npmjs.com/package/react-base64-downloader)
+
 Easily trigger the download of base64 encoded `.png` or `.jpg` images in React.
 
 ## Installation
